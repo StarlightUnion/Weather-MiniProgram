@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/forecast/forecast"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3C5F81",
+    "navigationBarTitleText": "今日天气",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#3C5F81",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/tab/weather.png",
+        "selectedIconPath": "images/tab/weather-s.png",
+        "text": "今日"
+      },
+      {
+        "pagePath": "pages/forecast/forecast",
+        "iconPath": "images/tab/pre.png",
+        "selectedIconPath": "images/tab/pre-s.png",
+        "text": "预测"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
