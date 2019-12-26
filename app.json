@@ -3,6 +3,11 @@
     "pages/index/index",
     "pages/forecast/forecast"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于获取天气数据"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#3C5F81",

@@ -1,3 +1,4 @@
+var app = getApp();
 Page({
   data: {
     region: ['浙江省', '杭州市', '萧山区'],
@@ -7,6 +8,7 @@ Page({
     this.setData({
       region: e.detail.value,
     });
+    app.region = e.detail.value;
     this.getweather();
   },
   getweather: function () {
@@ -27,7 +29,7 @@ Page({
         } else {
           wx.showToast({
             title: '数据获取失败',
-            icon: 'success',
+            icon: 'none',
             duration: 2000
           })
         }
@@ -36,5 +38,6 @@ Page({
   },
   onLoad: function (options) {
     this.getweather();
+    app.region = this.data.region;// 全局变量
   }
 })
