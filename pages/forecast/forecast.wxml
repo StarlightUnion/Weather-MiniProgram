@@ -1,2 +1,9 @@
-<view>
+<view class="container">
+  <view class="date">
+    <picker mode="date" value="{{date}}" start="{{start}}" end="{{end}}" bindchange="bindDateChange">
+      <view class="picker">
+        当前选择: {{date}}
+      </view>
+    </picker>
+  </view>
 </view>

@@ -9,9 +9,9 @@ Page({
       region: e.detail.value,
     });
     app.region = e.detail.value;
-    this.getweather();
+    this.getWeather();
   },
-  getweather: function () {
+  getWeather: function () {
     wx.showLoading({ title: '获取数据中', });
     let _this = this;
 
@@ -37,7 +37,7 @@ Page({
     })
   },
   onLoad: function (options) {
-    this.getweather();
+    this.getWeather();
     app.region = this.data.region;// 全局变量
   }
 })
