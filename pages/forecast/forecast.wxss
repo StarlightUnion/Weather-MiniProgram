@@ -1,4 +1,53 @@
-.date {
-  padding: 32rpx;
-  font-size: 40rpx;
+.container {
+  justify-content: unset;
+}
+
+.table {
+  width: calc(100% - 40rpx);
+  line-height: 60rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.table > .table-head {
+  color: #3C5F81;
+  font-weight: 600;
+}
+
+.table > .table-head,
+.table > .table-content {
+  width: 100%;
+  height: 160rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.table > .table-content.active {
+  background-color: #F5F5F5;
+}
+
+.table-line {
+  width: 100%;
+  height: 4rpx;
+  background-color: #3C5F81;
+}
+
+.table-head > view,
+.table-content > view {
+  text-align: center;
+}
+
+.date, .img {
+  width: 30%;
+}
+
+.tmp {
+  width: 20%;
+}
+
+.table-content image {
+  width: 30%;
+  height: 80%;
 }

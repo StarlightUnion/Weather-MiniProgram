@@ -2,7 +2,8 @@ var app = getApp();
 Page({
   data: {
     region: ['浙江省', '杭州市', '萧山区'],
-    now: ''
+    now: '',
+    imgUrl: '../../images/weather/999.png'
   },
   changeRegion: function (e) {
     this.setData({
@@ -23,8 +24,11 @@ Page({
       },
       success: function (res) {
         if (res.data.HeWeather6[0].status === "ok") {
-          console.log(res.data);
-          _this.setData({now: res.data.HeWeather6[0].now});
+          // console.log(res.data);
+          _this.setData({
+            now: res.data.HeWeather6[0].now,
+            imgUrl: '../../images/weather/' + res.data.HeWeather6[0].now.cond_code + '.png'
+          });
           wx.hideLoading();
         } else {
           wx.showToast({

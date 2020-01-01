@@ -6,3 +6,29 @@
   align-items: center;
   justify-content: space-between;
 } 
+
+.detail {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 60rpx;
+}
+
+.bar {
+  display: flex;
+  flex-direction: row;
+  margin: 20rpx 0;
+}
+
+.bar > .box:not(.title) {
+  color: #3C5F81;
+}
+
+.box {
+  width: 33.3%;
+  text-align: center;
+}
+
+.title {
+  font-weight: 600;
+}

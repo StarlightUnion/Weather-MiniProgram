@@ -5,7 +5,7 @@
     </picker>
   </view>
   <text class="weather-text">{{now.tmp}}℃ {{now.cond_txt}}</text>
-  <image src="../../images/weather/{{now.cond_code}}.png"></image>
+  <image src="{{imgUrl}}" mode="aspectFit"></image>
   <view class="detail">
     <view class="bar">
       <view class="title box">相对湿度</view>
@@ -13,7 +13,7 @@
       <view class="title box">能见度</view>
     </view>
     <view class="bar">
-      <view class="box">{{now.tmp}} %</view>
+      <view class="box">{{now.hum}} %</view>
       <view class="box">{{now.pres}} hPa</view>
       <view class="box">{{now.vis}} Km</view>
     </view>

@@ -1,9 +1,55 @@
 <view class="container">
-  <view class="date">
-    <picker mode="date" value="{{date}}" start="{{start}}" end="{{end}}" bindchange="bindDateChange">
-      <view class="picker">
-        当前选择: {{date}}
-      </view>
-    </picker>
+  <view class="table">
+    <view class="table-head">
+      <view class="date">日期</view>
+      <view class="img">天气</view>
+      <view class="tmp">最高温</view>
+      <view class="tmp">最低温</view>
+    </view>
+    <view class="table-line"></view>
+    <view class="table-content {{showDate === item.date ? 'active' : ''}}"
+      wx:for="{{foreCastData}}"
+      wx:key="index"
+      data-date="{{item.date}}"
+      bindtap="selecteDate"
+    >
+      <view class="date">{{item.date}}</view>
+      <image src="../../images/weather/{{item.cond_code_d}}.png" mode="aspectFit"></image>
+      <view class="tmp">{{item.tmp_max}}℃</view>
+      <view class="tmp">{{item.tmp_min}}℃</view>
+    </view>
+    <view class="table-line"></view>
+  </view>
+  <view class="detail" wx:if="{{flag}}">
+    <view class="bar">
+      <view class="title box">相对湿度</view>
+      <view class="title box">气压</view>
+      <view class="title box">能见度</view>
+    </view>
+    <view class="bar">
+      <view class="box">{{showData.hum}} %</view>
+      <view class="box">{{showData.pres}} hPa</view>
+      <view class="box">{{showData.vis}} Km</view>
+    </view>
+    <view class="bar">
+      <view class="title box">风向</view>
+      <view class="title box">风速</view>
+      <view class="title box">风力</view>
+    </view>
+    <view class="bar">
+      <view class="box">{{showData.wind_dir}}</view>
+      <view class="box">{{showData.wind_spd}} Km/h</view>
+      <view class="box">{{showData.wind_sc}} 级</view>
+    </view>
+    <view class="bar">
+      <view class="title box">降水量</view>
+      <view class="title box">降水概率</view>
+      <view class="title box">紫外线强度指数</view>
+    </view>
+    <view class="bar">
+      <view class="box">{{showData.pcpn}}</view>
+      <view class="box">{{showData.pop}} %</view>
+      <view class="box">{{showData.uv_index}}</view>
+    </view>
   </view>
 </view>

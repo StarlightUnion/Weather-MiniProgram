@@ -5,18 +5,10 @@ Page({
   data: {
     region: '',
     date: '',
-    start: '',
-    end: '',
+    showDate: '',
+    showData: '',
+    flag: false,
     foreCastData: '',
-    nowData: ''
-  },
-  bindDateChange: function (e) {
-    console.log(e);
-    this.data.foreCastData.map(item => {
-      if (item.date === e.detail.value) {
-        this.setData({nowData: item});
-      }
-    })
   },
   getForeCastWeather: function () {
     wx.showLoading({ title: '获取数据中', });
@@ -30,12 +22,9 @@ Page({
       },
       success: function (res) {
         if (res.data.HeWeather6[0].status === "ok") {
-          console.log(res.data);
-          let index = res.data.HeWeather6[0].daily_forecast.length;
+          // console.log(res.data);
           _this.setData({
-            end: res.data.HeWeather6[0].daily_forecast[index - 1].date,
-            foreCastData: res.data.HeWeather6[0].daily_forecast,
-            nowData: res.data.HeWeather6[0].daily_forecast[0]
+            foreCastData: res.data.HeWeather6[0].daily_forecast
           });
           wx.hideLoading();
         } else {
@@ -48,16 +37,37 @@ Page({
       }
     })
   },
+  selecteDate: function (e) {
+    let date = e.currentTarget.dataset.date;
+    let res = '';
+
+    this.data.foreCastData.map(item => {
+      if (item.date === date) {
+        res = item;
+      }
+    });
+
+    this.setData({
+      showDate: date,
+      showData: res,
+      flag: true
+    });
+  },
   onLoad: function (options) {// 页面加载时只执行一次
     // this.setData({region: app.region});
     // this.setData({date: util.formatTime(new Date())});
     // this.getForeCastWeather();
   },
+  onHide: function () {
+    this.setData({
+      showDate: '',
+      flag: false
+    });
+  },
   onShow: function () {// 第一次加载时onShow()在onLoad()之后执行，之后只要打开页面都执行
     this.setData({
       region: app.region,
-      date: util.formatTime(new Date()),
-      start: util.formatTime(new Date())
+      date: util.formatTime(new Date())
     });
     this.getForeCastWeather();
   }
