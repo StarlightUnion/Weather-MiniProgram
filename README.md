@@ -19,21 +19,74 @@
 * 3.封装共用的方法并将其应用到页面中。
 
 * 4.获取全局变量并利用它在页面跳转的时候**传值**。
-> ```
-> var app = getApp();
-> 
-> Page({
-> 	data: {
-> 		xxx: xxx
-> 		...
-> 	},
-> 	onShow: function () {
-> 		console.log(app);// 打印全局变量
-> 	}
-> })
-> ```
 
-* 5.小程序**页面生命周期函数**的用法。
-> ``onLoad()``->``onShow()``->``onReady()``->``onHide()``->``onShow()``->``onUnload()``
+```
+// 页面一 page1.js
+var app = getApp();
 
-* 6.学无止境......
+Page({
+	data: {
+		num: 1,
+		...
+	},
+	change: function () {// 某绑定事件
+		this.setData({num: this.data.num + 1});
+		app.num = this.data.num;
+	},
+	onLoad: function () {
+		app.num = this.data.num;
+	}
+ })
+
+// 页面二 page2.js
+var app = getApp();
+
+Page({
+	data: {
+		xxx: xxx
+		...
+	},
+	onShow: function () {
+		console.log(app.num);// 打印保存早全局变量中的值
+	}
+})
+```
+
+* 5.点击时为点击的对象添加选中样式
+
+```
+// page.wxml
+...
+<view class="item-style {{showIndex === item ? 'active' : ''}}"
+	wx:for="{{data}}"
+	wx:key="index"
+	data-index="{{item}}"
+	bindtap="click"
+>
+	{{item}}
+</view>
+
+// page.js
+Page({
+	data: {
+		data: [1, 2, 3, 4],
+		showIndex: '',
+		...
+	},
+	click: function (e) {
+		this.setData({showIndex: e.currentTarget.dataset.index});
+	}
+})
+
+// page.wxss
+...
+.item-style.active {
+  background-color: #F5F5F5;
+}
+```
+
+* 6.小程序**页面生命周期函数**的用法。
+
+``onLoad()``->``onShow()``->``onReady()``->``onHide()``->``onShow()``->``onUnload()``
+
+* 7.学无止境......
